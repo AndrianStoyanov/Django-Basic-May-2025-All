@@ -1,5 +1,7 @@
 {% load static %}
 {% load markdown_extras %}
+{% load current_time %}
+{% load user_info %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,10 +15,15 @@
 </head>
 <body>
     {% include 'common/nav.html' %}
-     <div class="container">
+    <p>Last refresh: {% current_time %}</p>
+    <div>
+        {% user_info request.user %}
+    </div>
+    <div class="container">
         {% block content %}
         {% endblock %}
-     </div>
+    </div>
+
 </body>
     <script src='https://unpkg.com/akar-icons-fonts'></script>
 </html>
